@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   keywords: ["trends", "products", "tracking", "market", "analysis"],
   authors: [{ name: "TrendBurst" }],
   creator: "TrendBurst",
+  icons: {
+    icon: "/assets/svg_fav.svg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -35,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

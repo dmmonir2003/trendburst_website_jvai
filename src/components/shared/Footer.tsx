@@ -7,42 +7,13 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Facebook, Twitter, Linkedin, Mail } from "lucide-react";
-
-const footerLinks = [
-  {
-    title: "Product",
-    links: [
-      { label: "Features", href: "/features" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Security", href: "#" },
-      { label: "Roadmap", href: "#" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "/about" },
-      { label: "Blog", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy", href: "/privacy-policy" },
-      { label: "Terms", href: "/terms" },
-      { label: "Cookies", href: "#" },
-    ],
-  },
-];
+import { Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Youtube, href: "#", label: "YouTube" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Mail, href: "#", label: "Email" },
 ];
 
 export function Footer() {
@@ -67,87 +38,95 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-gray-300 border-t border-gray-800">
+    <footer className="bg-background border-t border-primary/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* Brand */}
+          {/* Brand Section */}
           <motion.div variants={itemVariants}>
             <Link
               href="/"
-              className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+              className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
             >
               TrendBurst
             </Link>
-            <p className="mt-4 text-sm text-gray-400">
-              Discover trending products and track market trends in real-time.
+            <p className="mt-4 text-sm text-foreground/60 leading-relaxed">
+              Discover trending products with real-time analytics. Make
+              data-driven decisions for your drop shipping business.
             </p>
-            <div className="flex gap-4 mt-4">
+          </motion.div>
+
+          {/* About Us Section */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              About Us
+            </h3>
+            <p className="text-sm text-foreground/60 leading-relaxed">
+              TrendBurst helps entrepreneurs and businesses stay ahead of market
+              trends with advanced tracking and analytics.
+            </p>
+          </motion.div>
+
+          {/* Get In Touch Section */}
+          <motion.div variants={itemVariants}>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              Get In Touch
+            </h3>
+            <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  whileHover={{ scale: 1.2 }}
-                  className="text-gray-400 hover:text-white transition-colors"
+                  whileHover={{ scale: 1.2, color: "#00D4FF" }}
+                  className="text-foreground/60 hover:text-primary transition-colors"
                   aria-label={social.label}
                 >
-                  <social.icon size={20} />
+                  <social.icon size={24} />
                 </motion.a>
               ))}
             </div>
           </motion.div>
-
-          {/* Links */}
-          {footerLinks.map((section) => (
-            <motion.div key={section.title} variants={itemVariants}>
-              <h3 className="font-semibold text-white mb-4">{section.title}</h3>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
         </motion.div>
 
-        {/* Bottom */}
+        {/* Divider */}
         <motion.div
-          className="border-t border-gray-800 pt-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          className="border-t border-primary/10 my-8"
+          variants={itemVariants}
+        />
+
+        {/* Bottom Section */}
+        <motion.div
+          className="flex flex-col md:flex-row justify-between items-center gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400">
-              © 2026 TrendBurst. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <Link
-                href="/privacy-policy"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Terms of Service
-              </Link>
-            </div>
-          </div>
+          <motion.p
+            variants={itemVariants}
+            className="text-sm text-foreground/50"
+          >
+            © 2026 TrendBurst. All rights reserved.
+          </motion.p>
+          <motion.div variants={itemVariants} className="flex gap-6 text-sm">
+            <Link
+              href="/terms"
+              className="text-foreground/60 hover:text-primary transition-colors"
+            >
+              Terms & Conditions
+            </Link>
+            <Link
+              href="/privacy-policy"
+              className="text-foreground/60 hover:text-primary transition-colors"
+            >
+              Privacy Policy
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </footer>

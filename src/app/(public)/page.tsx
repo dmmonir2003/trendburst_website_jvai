@@ -8,6 +8,45 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { ArrowRight, TrendingUp, Shield, Zap } from "lucide-react";
+import { HeroSection } from "@/components/public/home/HeroSection";
+import { ProductsSection } from "@/components/public/home/ProductsSection";
+import { ProductInsightsSection } from "@/components/public/home/ProductInsightsSection";
+import { insightBlocksData } from "@/data/insightBlocksData";
+import img1 from "../../../public/assets/pablic_assetes/home/image_1.png";
+import img2 from "../../../public/assets/pablic_assetes/home/image_2.png";
+import img3 from "../../../public/assets/pablic_assetes/home/image_3.png";
+import img4 from "../../../public/assets/pablic_assetes/home/image_4.png";
+import img5 from "../../../public/assets/pablic_assetes/home/image_5.png";
+import { CTASection } from "@/components/public/home/CTASection";
+
+// Sample products - Replace these with your actual product images
+const myProducts = [
+  {
+    id: 1,
+    image: img1,
+    alt: "Product 1",
+  },
+  {
+    id: 2,
+    image: img2,
+    alt: "Product 2",
+  },
+  {
+    id: 3,
+    image: img3,
+    alt: "Product 3",
+  },
+  {
+    id: 4,
+    image: img4,
+    alt: "Product 4",
+  },
+  {
+    id: 5,
+    image: img5,
+    alt: "Product 5",
+  },
+];
 
 const features = [
   {
@@ -54,8 +93,12 @@ export default function HomePage() {
 
   return (
     <div className="w-full">
+      <HeroSection />
+      <ProductsSection products={myProducts} />
+      <ProductInsightsSection blocks={insightBlocksData} />
+      <CTASection></CTASection>
       {/* Hero Section */}
-      <section className="min-h-[90vh] flex items-center justify-center px-4 py-20">
+      {/* <section className="min-h-[90vh] flex items-center justify-center px-4 py-20">
         <motion.div
           className="max-w-5xl mx-auto text-center"
           variants={containerVariants}
@@ -103,10 +146,10 @@ export default function HomePage() {
             </Button>
           </motion.div>
         </motion.div>
-      </section>
+      </section> */}
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -145,10 +188,10 @@ export default function HomePage() {
             })}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <motion.div
           className="max-w-4xl mx-auto text-center px-4"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -166,7 +209,7 @@ export default function HomePage() {
             <ArrowRight className="ml-2" size={20} />
           </Button>
         </motion.div>
-      </section>
+      </section> */}
     </div>
   );
 }
