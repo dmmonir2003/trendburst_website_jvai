@@ -10,24 +10,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { toast } from "sonner";
+import ContactSection from "@/components/public/contact/ContactSection";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   subject: "",
+  //   message: "",
+  // });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Message sent! We will get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   toast.success("Message sent! We will get back to you soon.");
+  //   setFormData({ name: "", email: "", subject: "", message: "" });
+  // };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-20">
-      <motion.div
+    <div className="max-w-7xl mx-auto px-4 py-20">
+      {/* <motion.div
         className="text-center mb-16"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -122,7 +123,9 @@ export default function ContactPage() {
         <Button type="submit" className="w-full">
           Send Message
         </Button>
-      </motion.form>
+      </motion.form> */}
+
+      <ContactSection></ContactSection>
     </div>
   );
 }

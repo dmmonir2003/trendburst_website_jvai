@@ -4,12 +4,19 @@
 
 "use client";
 
+import AboutHero from "@/components/public/about/AboutHero";
+import BuiltForClaritySection from "@/components/public/about/BuiltForClaritySection";
+import CorePillarsSection from "@/components/public/about/CorePillarsSection";
+import OurApproachSection from "@/components/public/about/OurApproachSection";
+import WhoWeAreSection from "@/components/public/about/WhoWeAreSection";
+import WhyExistsSection from "@/components/public/about/WhyExistsSection";
+import CTASection from "@/components/public/home/CTASection";
 import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-20">
-      <motion.div
+    <div className="">
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="space-y-12"
@@ -62,7 +69,14 @@ export default function AboutPage() {
             hello@trendburst.io
           </p>
         </div>
-      </motion.div>
+      </motion.div> */}
+
+      <AboutHero />
+      <WhoWeAreSection></WhoWeAreSection>
+      <CorePillarsSection></CorePillarsSection>
+      <WhyExistsSection></WhyExistsSection>
+      <OurApproachSection></OurApproachSection>
+      <BuiltForClaritySection></BuiltForClaritySection>
     </div>
   );
 }

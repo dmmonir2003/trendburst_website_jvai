@@ -186,8 +186,15 @@ export const ProductInsightsSection = ({
   };
 
   return (
-    <section className="w-full py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full pt-20 lg:pt-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+      {/* Background gradient glows */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="absolute -top-40 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl opacity-30" />
+        <div className="absolute -bottom-40 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl opacity-30" />
+        <div className="absolute top-1/2 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl opacity-20" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -228,12 +235,6 @@ export const ProductInsightsSection = ({
               isImageFirst={index % 2 === 0} // Alternate layout
             />
           ))}
-        </div>
-
-        {/* Decorative background elements */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
-          <div className="absolute -top-40 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl opacity-20" />
-          <div className="absolute -bottom-40 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl opacity-20" />
         </div>
       </div>
     </section>

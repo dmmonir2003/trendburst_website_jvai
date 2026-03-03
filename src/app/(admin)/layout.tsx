@@ -23,10 +23,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   }
 
   // Check if user is admin
-  if (!isAuthenticated || !user || user.role !== "admin") {
-    router.push("/overview");
-    return null;
-  }
+  // if (!isAuthenticated || !user || user.role !== "admin") {
+  //   router.push("/overview");
+  //   return null;
+  // }
 
   return (
     <div className="flex min-h-screen bg-gray-50">

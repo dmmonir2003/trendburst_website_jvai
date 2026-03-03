@@ -4,12 +4,21 @@
 
 "use client";
 
+import { DataUsageSection } from "@/components/public/Privacy/DataUsageSection";
+import { PolicyUpdatesSection } from "@/components/public/Privacy/PolicyUpdatesSection";
+
+// import DataProcessingSection from "@/components/public/Privacy/DataProcessingSection";
+import { PrivacyHeroSection } from "@/components/public/Privacy/PrivacyHeroSection";
 import { motion } from "framer-motion";
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-20">
-      <motion.div
+    <div className="">
+      <PrivacyHeroSection></PrivacyHeroSection>
+      <DataUsageSection></DataUsageSection>
+      <PolicyUpdatesSection></PolicyUpdatesSection>
+
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -79,7 +88,7 @@ export default function PrivacyPolicyPage() {
             </p>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }

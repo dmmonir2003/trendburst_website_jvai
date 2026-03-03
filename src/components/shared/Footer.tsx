@@ -7,12 +7,21 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
-
+import {
+  Facebook,
+  Instagram,
+  Youtube,
+  Linkedin,
+  Twitter,
+  Rocket,
+} from "lucide-react";
+import logo from "../../../public/assets/svg_logo.svg";
+import Image from "next/image";
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
   { icon: Instagram, href: "#", label: "Instagram" },
   { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
 ];
 
@@ -38,96 +47,78 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-background border-t border-primary/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-black border-t border-white/5 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8"
+          className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* Brand Section */}
-          <motion.div variants={itemVariants}>
-            <Link
-              href="/"
-              className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-            >
-              TrendBurst
+          {/* Left Side: Brand Section */}
+          <motion.div variants={itemVariants} className="max-w-sm">
+            <Link href="/" className="shrink-0">
+              <Image src={logo} width={168} height={68} alt="TrendBurst Logo" />
             </Link>
-            <p className="mt-4 text-sm text-foreground/60 leading-relaxed">
+            <p className="mt-6 text-sm text-gray-400 leading-relaxed">
               Discover trending products with real-time analytics. Make
               data-driven decisions for your drop shipping business.
             </p>
           </motion.div>
 
-          {/* About Us Section */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              About Us
-            </h3>
-            <p className="text-sm text-foreground/60 leading-relaxed">
-              TrendBurst helps entrepreneurs and businesses stay ahead of market
-              trends with advanced tracking and analytics.
-            </p>
-          </motion.div>
+          {/* Right Side: Navigation and Socials */}
+          <div className="flex flex-col sm:flex-row gap-12 md:gap-24">
+            {/* About Us Link Section */}
+            <motion.div variants={itemVariants}>
+              <Link
+                href="/about"
+                className="text-lg font-semibold text-white hover:text-[#00E5FF] transition-colors"
+              >
+                About Us
+              </Link>
+            </motion.div>
 
-          {/* Get In Touch Section */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              Get In Touch
-            </h3>
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  whileHover={{ scale: 1.2, color: "#00D4FF" }}
-                  className="text-foreground/60 hover:text-primary transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon size={24} />
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
+            {/* Get In Touch Section */}
+            <motion.div variants={itemVariants} className="space-y-4">
+              <h3 className="text-lg font-semibold text-white">Get in Touch</h3>
+              <div className="flex gap-5">
+                {socialLinks.map((social) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    whileHover={{ scale: 1.1, color: "#00E5FF" }}
+                    className="text-white hover:text-[#00E5FF] transition-colors"
+                    aria-label={social.label}
+                  >
+                    <social.icon size={22} strokeWidth={2} />
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Divider */}
-        <motion.div
-          className="border-t border-primary/10 my-8"
-          variants={itemVariants}
-        />
+        <div className="border-t border-white/10 w-full mb-8" />
 
         {/* Bottom Section */}
-        <motion.div
-          className="flex flex-col md:flex-row justify-between items-center gap-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.p
-            variants={itemVariants}
-            className="text-sm text-foreground/50"
-          >
-            © 2026 TrendBurst. All rights reserved.
-          </motion.p>
-          <motion.div variants={itemVariants} className="flex gap-6 text-sm">
-            <Link
-              href="/terms"
-              className="text-foreground/60 hover:text-primary transition-colors"
-            >
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+          <p>© 2026 TrendBurst. All rights reserved.</p>
+
+          <div className="flex items-center gap-4">
+            <Link href="/terms" className="hover:text-white transition-colors">
               Terms & Conditions
             </Link>
+            <span className="text-gray-600">|</span>
             <Link
               href="/privacy-policy"
-              className="text-foreground/60 hover:text-primary transition-colors"
+              className="hover:text-white transition-colors"
             >
               Privacy Policy
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </footer>
   );

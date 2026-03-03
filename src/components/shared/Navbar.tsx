@@ -15,6 +15,7 @@ import logo from "../../../public/assets/svg_logo.svg";
 import { GetStartedButton } from "../buttons/ButtonVariants";
 
 const navItems = [
+  { label: "Home", href: "/" },
   { label: "Features", href: "/features" },
   { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "/faq" },
@@ -35,7 +36,7 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className="sticky top-0 z-50 w-full border-b border-primary/10"
-      style={{ backgroundColor: "#00000033" }}
+      style={{ backgroundColor: "#0D181B" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
         <div className="flex justify-between items-center py-3">

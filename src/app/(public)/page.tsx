@@ -18,6 +18,7 @@ import img3 from "../../../public/assets/pablic_assetes/home/image_3.png";
 import img4 from "../../../public/assets/pablic_assetes/home/image_4.png";
 import img5 from "../../../public/assets/pablic_assetes/home/image_5.png";
 import { CTASection } from "@/components/public/home/CTASection";
+import { FeaturesGridSection } from "@/components/public/home/FeaturesGridSection";
 
 // Sample products - Replace these with your actual product images
 const myProducts = [
@@ -96,7 +97,8 @@ export default function HomePage() {
       <HeroSection />
       <ProductsSection products={myProducts} />
       <ProductInsightsSection blocks={insightBlocksData} />
-      <CTASection></CTASection>
+      <CTASection />
+      <FeaturesGridSection />
       {/* Hero Section */}
       {/* <section className="min-h-[90vh] flex items-center justify-center px-4 py-20">
         <motion.div

@@ -4,9 +4,20 @@
 
 "use client";
 
-import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { CheckCircle } from "lucide-react";
+import { FeaturesHeroSection } from "@/components/public/features/FeaturesHeroSection";
+import { CoreFeaturesSection } from "@/components/public/features/CoreFeaturesSection";
+import { SupportedPlatformsSection } from "@/components/public/features/SupportedPlatformsSection";
+import {
+  HowItWorksSection,
+  WorkStep,
+} from "@/components/public/features/HowItWorksSection";
+
+import walmartLogo from "../../../../public/assets/pablic_assetes/fetures/platform1.png";
+import amazonLogo from "../../../../public/assets/pablic_assetes/fetures/platform2.png";
+import shopifyLogo from "../../../../public/assets/pablic_assetes/fetures/platform3.png";
+import { ShoppingBag, Search, Zap } from "lucide-react";
+import { FeaturesCtaSection } from "@/components/public/features/FeaturesCtaSection";
+import BuiltForClaritySection from "@/components/public/about/BuiltForClaritySection";
 
 const featureList = [
   "Real-time product trend tracking",
@@ -19,50 +30,71 @@ const featureList = [
   "API access",
 ];
 
+const platforms = [
+  {
+    id: 1,
+    image: walmartLogo,
+    alt: "Walmart Logo",
+    title: "Walmart",
+    description:
+      "Connect your store data to explore product trends, performance stats, and market movement in one place.",
+  },
+  {
+    id: 2,
+    image: amazonLogo,
+    alt: "Amazon Logo",
+    title: "Amazon",
+    description:
+      "Analyze product performance, pricing behavior, and competitive signals across a large-scale marketplace.",
+  },
+  {
+    id: 3,
+    image: shopifyLogo,
+    alt: "Shopify Logo",
+    title: "Shopify",
+    description:
+      "Discover listing performance, pricing data, and demand patterns from an active resale marketplace.",
+  },
+];
+
+const steps: WorkStep[] = [
+  {
+    id: 1,
+    number: "01",
+    icon: <ShoppingBag size={24} />,
+    title: "Subscribe",
+    description:
+      "Select a subscription plan that fits your business needs and gain instant access.",
+    color: "cyan",
+  },
+  {
+    id: 2,
+    number: "02",
+    icon: <Search size={24} />,
+    title: "Analyze Products",
+    description:
+      "Get real-time insights, trend detection, and performance data across all platforms.",
+    color: "green",
+  },
+  {
+    id: 3,
+    number: "03",
+    icon: <Zap size={24} />,
+    title: "Purchase If Interested",
+    description:
+      "Buy products directly from marketplaces after making informed decisions.",
+    color: "purple",
+  },
+];
+
 export default function FeaturesPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-20">
-      <motion.div
-        className="text-center mb-16"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
-        <h1 className="text-4xl font-bold mb-4">Powerful Features</h1>
-        <p className="text-xl text-gray-600">
-          Everything you need to track trending products
-        </p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        {featureList.map((feature, index) => (
-          <motion.div
-            key={feature}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="flex items-start gap-4"
-          >
-            <CheckCircle
-              className="text-green-600 flex-shrink-0 mt-1"
-              size={24}
-            />
-            <span className="text-lg text-gray-700">{feature}</span>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-12 text-center"
-      >
-        <h2 className="text-3xl font-bold mb-4">Coming Soon</h2>
-        <p className="text-gray-600 text-lg">
-          We're constantly adding new features to help you stay ahead of trends
-        </p>
-      </motion.div>
-    </div>
+    <>
+      <FeaturesHeroSection />
+      <CoreFeaturesSection />
+      <SupportedPlatformsSection platforms={platforms} />
+      <HowItWorksSection steps={steps} />
+      <FeaturesCtaSection></FeaturesCtaSection>
+    </>
   );
 }

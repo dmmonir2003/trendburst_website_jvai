@@ -38,7 +38,7 @@ export function ProductsSection({
   }, [isAutoPlay, products.length]);
 
   return (
-    <section className="w-full py-20 overflow-hidden bg-slate-950">
+    <section className="w-full py-20 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         {/* Header */}

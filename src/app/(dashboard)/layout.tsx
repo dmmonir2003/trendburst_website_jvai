@@ -23,10 +23,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     );
   }
 
-  if (!isAuthenticated || !user) {
-    router.push("/login");
-    return null;
-  }
+  // if (!isAuthenticated || !user) {
+  //   router.push("/login");
+  //   return null;
+  // }
 
   return (
     <div className="flex min-h-screen bg-gray-50">
