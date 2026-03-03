@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 
 export interface PlatformCard {
@@ -12,7 +12,7 @@ export interface PlatformCard {
 }
 
 export interface SupportedPlatformsSectionProps {
-  platforms: PlatformCard[];
+  platforms?: PlatformCard[];
   title?: string;
   titleHighlight?: string;
   subtitle?: string;
@@ -29,7 +29,7 @@ export function SupportedPlatformsSection({
   titleHighlight = "Platforms",
   subtitle = "Unified insights across the world's leading e-commerce market places",
 }: SupportedPlatformsSectionProps) {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -40,7 +40,7 @@ export function SupportedPlatformsSection({
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -87,7 +87,7 @@ export function SupportedPlatformsSection({
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {platforms.map((platform) => (
+          {platforms?.map((platform) => (
             <motion.div
               key={platform.id}
               variants={itemVariants}

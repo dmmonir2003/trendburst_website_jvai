@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import Image, { StaticImageData } from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 /**
  * Type definitions for Insight Block
@@ -56,7 +56,7 @@ const InsightBlock = ({
     );
   };
   // Animation variants for scroll animations
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -67,7 +67,7 @@ const InsightBlock = ({
     },
   };
 
-  const imageVariants = {
+  const imageVariants: Variants = {
     hidden: { opacity: 0, x: isImageFirst ? -60 : 60 },
     visible: {
       opacity: 1,
@@ -76,7 +76,7 @@ const InsightBlock = ({
     },
   };
 
-  const textVariants = {
+  const textVariants: Variants = {
     hidden: { opacity: 0, x: isImageFirst ? 60 : -60 },
     visible: {
       opacity: 1,

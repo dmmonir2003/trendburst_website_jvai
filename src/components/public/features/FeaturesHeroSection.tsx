@@ -1,13 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // ✅ Import Variants type
 
 /**
  * Features Page Hero Section
  * Displays the main headline and description for the features page
  */
 export function FeaturesHeroSection() {
-  const containerVariants = {
+  // ✅ Explicitly type as Variants to satisfy TypeScript
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -18,12 +19,16 @@ export function FeaturesHeroSection() {
     },
   };
 
-  const itemVariants = {
+  // ✅ Explicitly type as Variants
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: {
+        duration: 0.8,
+        ease: "easeOut", // TypeScript now knows this matches framer's internal Easing type
+      },
     },
   };
 
@@ -45,7 +50,6 @@ export function FeaturesHeroSection() {
           initial="hidden"
           animate="visible"
         >
-          {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
@@ -56,7 +60,6 @@ export function FeaturesHeroSection() {
             </span>
           </motion.h1>
 
-          {/* Description */}
           <motion.p
             variants={itemVariants}
             className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed"
@@ -66,12 +69,11 @@ export function FeaturesHeroSection() {
             Shopify, Amazon, and eBay
           </motion.p>
 
-          {/* Underline */}
           <motion.div
             variants={itemVariants}
             className="flex justify-center my-8 "
           >
-            <div className="h-1 w-full max-w-md bg-linear-to-r from-transparent via-cyan-400 to-transparent rounded-full" />
+            <div className="h-1 w-full max-w-md bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full" />
           </motion.div>
         </motion.div>
       </div>

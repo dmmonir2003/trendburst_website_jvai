@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -31,7 +31,7 @@ export function FeaturesCtaSection({
   onPrimaryClick,
   onSecondaryClick,
 }: FeaturesCtaSectionProps) {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -100,8 +100,10 @@ export default function FeaturesPage() {
     <>
       <FeaturesHeroSection />
       <CoreFeaturesSection />
-      <SupportedPlatformsSection platforms={platforms} />
-      <HowItWorksSection steps={steps} />
+      <SupportedPlatformsSection />
+      {/* <SupportedPlatformsSection platforms={platforms} /> */}
+      <HowItWorksSection />
+      {/* <HowItWorksSection steps={steps} /> */}
       <FeaturesCtaSection
         onPrimaryClick={() => router.push("/signup")}
         onSecondaryClick={() => router.push("/pricing")}

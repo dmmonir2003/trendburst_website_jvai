@@ -58,7 +58,7 @@ export function HowItWorksSection({
   titleHighlight = "works",
   subtitle = "Get started with a simple, well-structured three-step approach",
 }: {
-  steps: WorkStep[];
+  steps?: WorkStep[];
   title?: string;
   titleHighlight?: string;
   subtitle?: string;
@@ -76,7 +76,7 @@ export function HowItWorksSection({
 
         {/* Steps Container */}
         <div className="flex flex-col lg:flex-row items-center justify-center lg:gap-0">
-          {steps.map((step, index) => {
+          {steps?.map((step, index) => {
             const theme = colorMap[step.color] || colorMap.cyan;
             const shadowHex = stepsHexMap[step.color];
 

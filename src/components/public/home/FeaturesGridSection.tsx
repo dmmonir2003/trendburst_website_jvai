@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   TrendingUp,
   BarChart3,
@@ -66,7 +66,7 @@ const features: FeatureCard[] = [
  * Displays 6 feature cards in a 3x2 grid with hover effects
  */
 export function FeaturesGridSection() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -77,7 +77,7 @@ export function FeaturesGridSection() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
