@@ -4,12 +4,15 @@
 
 "use client";
 
+import { PolicyUpdatesSection } from "@/components/public/Privacy/PolicyUpdatesSection";
+import { AccountLegalSection } from "@/components/public/terms/AccountLegalSection";
+import { TermsHeroSection } from "@/components/public/terms/TermsHeroSection";
 import { motion } from "framer-motion";
 
 export default function TermsPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-20">
-      <motion.div
+    <div className="">
+      {/* <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -77,7 +80,11 @@ export default function TermsPage() {
             </p>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
+
+      <TermsHeroSection></TermsHeroSection>
+      <AccountLegalSection></AccountLegalSection>
+      <PolicyUpdatesSection></PolicyUpdatesSection>
     </div>
   );
 }
