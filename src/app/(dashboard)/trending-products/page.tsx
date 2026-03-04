@@ -2,116 +2,102 @@
  * Trending Products Page
  */
 
+// "use client";
+
+// import { motion } from "framer-motion";
+// import { Card } from "@/components/ui/card";
+// import { SkeletonLoader } from "@/components/sections/SkeletonLoader";
+// import { Product } from "@/types/product.types";
+// import { useState } from "react";
+// import FilterSection from "@/components/dashboard/trendin- products/FilterSection";
+// import ProductCard, {
+//   ProductProps,
+// } from "@/components/dashboard/trendin- products/ProductCard";
+
+// // // Mock data
+
+// export default function TrendingProductsPage() {
+//   const [isLoading, setIsLoading] = useState(false);
+
+//   if (isLoading) {
+//     return <SkeletonLoader count={6} />;
+//   }
+
+//   return (
+//     <div className="">
+//       <FilterSection></FilterSection>
+//       <ProductCard></ProductCard>
+//     </div>
+//   );
+// }
+
 "use client";
 
-import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { SkeletonLoader } from "@/components/sections/SkeletonLoader";
-import { Product } from "@/types/product.types";
 import { useState } from "react";
 
-// Mock data
-const mockProducts: Product[] = [
+import { SkeletonLoader } from "@/components/sections/SkeletonLoader";
+import ProductCard, {
+  ProductProps,
+} from "@/components/dashboard/trendin- products/ProductCard";
+import FilterSection from "@/components/dashboard/trendin- products/FilterSection";
+
+const mockProducts: ProductProps[] = [
   {
-    id: "1",
-    name: "Premium Wireless Headphones",
-    description: "High-quality sound with noise cancellation",
-    price: 199.99,
-    originalPrice: 299.99,
-    category: "Electronics",
+    id: "01",
+    name: "Airpods Pro",
+    desc: "Wireless earbuds with active noise cancellation, clear sound, and seamless Apple connectivity.",
     image:
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop",
-    rating: 4.8,
-    reviews: 245,
-    inStock: true,
-    trending: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+      "https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?q=80&w=500&auto=format&fit=crop", // Replace with your actual asset path
+    platform: "Amazon",
+    trend: "90%",
+    views: "2.4k",
+    saves: "1.1k",
+    color: "#00f7ff", // Cyan glow
   },
   {
-    id: "2",
-    name: "Smart Watch Pro",
-    description: "Monitor your health and fitness",
-    price: 299.99,
-    originalPrice: 399.99,
-    category: "Electronics",
+    id: "02",
+    name: "Omega Planet Ocean",
+    desc: "Luxury dive watch with stainless steel case, water resistance, and luminous hands—perfect for adventures.",
     image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop",
-    rating: 4.6,
-    reviews: 189,
-    inStock: true,
-    trending: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+      "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=500&auto=format&fit=crop",
+    platform: "eBay",
+    trend: "40%",
+    views: "3k",
+    saves: "2.1k",
+    color: "#ff00ff", // Magenta glow
   },
 ];
 
 export default function TrendingProductsPage() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
   if (isLoading) {
-    return <SkeletonLoader count={6} />;
+    return (
+      <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <SkeletonLoader count={6} />
+      </div>
+    );
   }
 
   return (
-    <div className="space-y-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
-        <h1 className="text-3xl font-bold">Trending Products</h1>
-        <p className="text-gray-600 mt-2">
-          Discover the hottest products trending right now
-        </p>
-      </motion.div>
+    <div className="min-h-screen bg-[#0a0c10] p-6 lg:p-10">
+      {/* Header Info */}
+      <div className="mb-10">
+        <h1 className="text-4xl font-bold text-white mb-2">
+          Trending Products
+        </h1>
+        <p className="text-gray-400">Discover the top-performing products</p>
+      </div>
 
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1 },
-          },
-        }}
-        initial="hidden"
-        animate="visible"
-      >
+      {/* 1. Filter Area */}
+      <FilterSection />
+
+      {/* 2. Cards Area - Responsive Grid */}
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         {mockProducts.map((product) => (
-          <motion.div
-            key={product.id}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="font-semibold">{product.name}</h3>
-                <p className="text-gray-600 text-sm mt-1">
-                  {product.description}
-                </p>
-                <div className="flex items-center justify-between mt-4">
-                  <div>
-                    <p className="text-lg font-bold">${product.price}</p>
-                    <p className="text-sm text-gray-500 line-through">
-                      ${product.originalPrice}
-                    </p>
-                  </div>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">
-                    ⭐ {product.rating}
-                  </span>
-                </div>
-              </div>
-            </Card>
-          </motion.div>
+          <ProductCard key={product.id} product={product} />
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
